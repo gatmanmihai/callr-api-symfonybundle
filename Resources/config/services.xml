@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="youmesoft_callr.manager.class">Youmesoft\CallrBundle\Manager\CallrManager</parameter>
+        <parameter key="youmesoft_callr.subscriber.class">Youmesoft\CallrBundle\EventSubscriber\CallrSubscriber</parameter>
+    </parameters>
+
+    <services>
+        <service id="youmesoft_callr.manager" class="%youmesoft_callr.manager.class%">
+            <argument type="collection"/>
+            <argument type="service" id="service_container"/>
+        </service>
+
+        <service id="youmesoft_callr.subscriber" class="%youmesoft_callr.subscriber.class%">
+            <argument type="service" id="service_container"/>
+            <argument type="collection"/>
+            <tag name="callr.subscriber"/>
+        </service>
+    </services>
+</container>
