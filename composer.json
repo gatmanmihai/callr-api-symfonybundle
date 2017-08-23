@@ -3,7 +3,7 @@
     "type":              "symfony-bundle",
     "description":       "",
     "keywords":          [
-        "callr", "symfony-bundle", "youmesoft", "gatman"
+        "callr", "symfony-bundle", "youmesoft", "gatman", "api"
     ],
     "homepage":          "https://bitbucket.org/youmesoft/callr-api-symfonybundle",
     "license":           "MIT",
