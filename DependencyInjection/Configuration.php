@@ -33,7 +33,7 @@ class Configuration implements ConfigurationInterface
                             ->scalarNode('manager')->defaultValue('default')->end()
                         ->end()
                     ->end()
-                    ->scalarNode('sms_sender')->isRequired()->end()
+                    ->booleanNode('disable_delivery')->defaultFalse()->end()
                     ->enumNode('auth_type')
                         ->isRequired()
                         ->values(['login_password', 'api_key'])

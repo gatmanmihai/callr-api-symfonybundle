@@ -5,6 +5,7 @@ namespace Youmesoft\CallrBundle\DependencyInjection;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
+use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
@@ -25,7 +26,19 @@ class YoumesoftCallrExtension extends Extension
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.xml');
 
-        $container->getDefinition('youmesoft_callr.manager')->replaceArgument(0, $config);
+        if ($config['disable_delivery']) {
+            $container->getDefinition('youmesoft_callr.manager')
+                      ->replaceArgument(1, new Reference('youmesoft_callr.null_transporter'));
+        }
+
+        $container->getDefinition('youmesoft_callr.transporter')->replaceArgument(0, $config);
         $container->getDefinition('youmesoft_callr.subscriber')->replaceArgument(1, $config);
+
+        $container->findDefinition('youmesoft_callr.data_collector')
+                  ->addTag('data_collector', [
+                      'template' => '@YoumesoftCallr/Collector/callr.html.twig',
+                      'id'       => 'callr',
+                      'priority' => 245,
+                  ]);
     }
 }

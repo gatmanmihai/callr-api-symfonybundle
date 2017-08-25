@@ -38,7 +38,7 @@ youmesoft_callr:
         mode: "orm" # can be one of values: file or orm
         manager: "app" # name of entity manager. Type default if you use default one in doctrine configuration required if "orm" mode is used
         path: "%kernel.root_dir/../var/callr%" # path to the folder where to store the logs. required if "file" mode is used
-    sms_sender: "VotreRDV"
+    disable_delivery: true
     auth_type: "login_password" # can be one of values: login_password or api_key
     credentials:
         username: "%callr_username%" # required if "login_password" auth_type is used

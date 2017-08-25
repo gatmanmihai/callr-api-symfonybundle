@@ -7,6 +7,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Youmesoft\CallrBundle\Entity\CallrLog;
 use Youmesoft\CallrBundle\Event\CallrRequestEvent;
+use Youmesoft\CallrBundle\Event\CallrSendEvent;
+use Youmesoft\CallrBundle\Logger\MessageLogger;
 use Youmesoft\CallrBundle\YoumesoftCallrEvents;
 
 class CallrSubscriber implements EventSubscriberInterface
@@ -14,11 +16,15 @@ class CallrSubscriber implements EventSubscriberInterface
     /** @var ContainerInterface */
     protected $container;
 
+    /** @var MessageLogger */
+    protected $logger;
+
     /** @var array */
     protected $config;
 
-    public function __construct(ContainerInterface $container, array $config)
+    public function __construct(ContainerInterface $container, array $config, MessageLogger $logger)
     {
+        $this->logger    = $logger;
         $this->container = $container;
         $this->config    = $config;
     }
@@ -29,8 +35,14 @@ class CallrSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            YoumesoftCallrEvents::CALLR_REQUEST => 'onCallrRequest',
+            YoumesoftCallrEvents::CALLR_REQUEST  => 'onCallrRequest',
+            YoumesoftCallrEvents::CALLR_SMS_SEND => 'onCallrSmsSend',
         ];
+    }
+
+    public function onCallrSmsSend(CallrSendEvent $event)
+    {
+        $this->logger->beforeSendPerformed($event);
     }
 
     public function onCallrRequest(CallrRequestEvent $event)

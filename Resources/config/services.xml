@@ -6,18 +6,36 @@
 
     <parameters>
         <parameter key="youmesoft_callr.manager.class">Youmesoft\CallrBundle\Manager\CallrManager</parameter>
+        <parameter key="youmesoft_callr.transporter.class">Youmesoft\CallrBundle\Transporter\CallrTransporter</parameter>
+        <parameter key="youmesoft_callr.null_transporter.class">Youmesoft\CallrBundle\Transporter\NullTransporter</parameter>
+        <parameter key="youmesoft_callr.logger.class">Youmesoft\CallrBundle\Logger\MessageLogger</parameter>
+        <parameter key="youmesoft_callr.data_collector.class">Youmesoft\CallrBundle\DataCollector\MessageDataCollector</parameter>
         <parameter key="youmesoft_callr.subscriber.class">Youmesoft\CallrBundle\EventSubscriber\CallrSubscriber</parameter>
     </parameters>
 
     <services>
-        <service id="youmesoft_callr.manager" class="%youmesoft_callr.manager.class%">
+        <service id="youmesoft_callr.transporter" class="%youmesoft_callr.transporter.class%">
             <argument type="collection"/>
-            <argument type="service" id="service_container"/>
+        </service>
+        <service id="youmesoft_callr.null_transporter" class="%youmesoft_callr.null_transporter.class%">
+            <argument type="collection"/>
+        </service>
+
+        <service id="youmesoft_callr.logger" class="%youmesoft_callr.logger.class%" />
+
+        <service id="youmesoft_callr.data_collector" class="%youmesoft_callr.data_collector.class%" public="false">
+            <argument type="service" id="service_container" />
+        </service>
+
+        <service id="youmesoft_callr.manager" class="%youmesoft_callr.manager.class%">
+            <argument type="service" id="youmesoft_callr.subscriber"/>
+            <argument type="service" id="youmesoft_callr.transporter"/>
         </service>
 
         <service id="youmesoft_callr.subscriber" class="%youmesoft_callr.subscriber.class%">
             <argument type="service" id="service_container"/>
             <argument type="collection"/>
+            <argument type="service" id="youmesoft_callr.logger"/>
             <tag name="callr.subscriber"/>
         </service>
     </services>

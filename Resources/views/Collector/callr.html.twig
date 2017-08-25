@@ -1,0 +1,103 @@
+{% extends '@WebProfiler/Profiler/layout.html.twig' %}
+
+{% block toolbar %}
+    {% set profiler_markup_version = profiler_markup_version|default(1) %}
+
+    {% if collector.messageCount %}
+        {% set icon %}
+            {% if profiler_markup_version == 1 %}
+                <span class="sf-toolbar-status">{{ collector.messageCount }}</span>
+            {% else %}
+                <span class="sf-toolbar-value">{{ collector.messageCount }}</span>
+            {% endif %}
+        {% endset %}
+
+        {% set text %}
+            <div class="sf-toolbar-info-piece">
+                <b>Sent messages</b>
+                <span class="sf-toolbar-status">{{ collector.messageCount }}</span>
+            </div>
+        {% endset %}
+
+        {{ include('@WebProfiler/Profiler/toolbar_item.html.twig', { 'link': profiler_url }) }}
+    {% endif %}
+{% endblock %}
+
+{% block menu %}
+    {% set profiler_markup_version = profiler_markup_version|default(1) %}
+
+    <span class="label {{ collector.messageCount ? '' : 'disabled' }}">
+        <strong>Sms-es</strong>
+        {% if collector.messageCount > 0 %}
+            <span class="count">
+                <span>{{ collector.messageCount }}</span>
+            </span>
+        {% endif %}
+    </span>
+{% endblock %}
+
+{% block panel %}
+    {% set profiler_markup_version = profiler_markup_version|default(1) %}
+
+    {% if profiler_markup_version == 1 %}
+        <style>
+            h3 { margin-top: 2em; }
+            h3 span { color: #999; font-weight: normal; }
+            h3 small { color: #999; }
+            h4 { font-size: 14px; font-weight: bold; }
+            .card { background: #F5F5F5; margin: .5em 0 1em; padding: .5em; }
+            .card .label { display: block; font-size: 13px; font-weight: bold; margin-bottom: .5em; }
+            .card .card-block { margin-bottom: 1em; }
+        </style>
+    {% endif %}
+
+    <h2>Sms-es</h2>
+
+    {% if collector.messageCount == 0 %}
+        <div class="empty">
+            <p>No sms messages were sent.</p>
+        </div>
+    {% endif %}
+
+    <div class="metrics">
+            <div class="metric">
+                <span class="value">{{ collector.messageCount }}</span>
+                <span class="label">sent {{ collector.messageCount == 1 ? 'message' : 'messages' }}</span>
+            </div>
+    </div>
+
+        {% if not collector.messages %}
+            <div class="empty">
+                <p>No sms messages were sent.</p>
+            </div>
+        {% else %}
+            {% for message in collector.messages %}
+                {% if loop.length > 1 %}
+                    <h4>Sms #{{ loop.index }} details</h4>
+                {% else %}
+                    <h4>Sms details</h4>
+                {% endif %}
+
+                <div class="card">
+                    <div class="card-block">
+                        <span class="label">From</span>
+                        <pre>{{ message.from }}</pre>
+                    </div>
+                    <div class="card-block">
+                        <span class="label">To</span>
+                        <pre>{{ message.to }}</pre>
+                    </div>
+                    <div class="card-block">
+                        <span class="label">Body</span>
+                        <pre>{{- message.body }}</pre>
+                    </div>
+                    <div class="card-block">
+                        <span class="label">Options</span>
+                        <pre>{% for options in message.options %}
+                            {{- header -}}
+                        {% endfor %}</pre>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+{% endblock %}
