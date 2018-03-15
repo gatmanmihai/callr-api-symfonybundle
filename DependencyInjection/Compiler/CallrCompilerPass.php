@@ -1,6 +1,6 @@
 <?php
 
-namespace Youmesoft\CallrBundle\DependencyInjection\Compiler;
+namespace Gatman\CallrBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

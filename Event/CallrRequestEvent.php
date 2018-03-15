@@ -1,6 +1,6 @@
 <?php
 
-namespace Youmesoft\CallrBundle\Event;
+namespace Gatman\CallrBundle\Event;
 
 use Symfony\Component\EventDispatcher\Event;
 

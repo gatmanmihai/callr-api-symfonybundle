@@ -1,15 +1,15 @@
 <?php
 
-namespace Youmesoft\CallrBundle\EventSubscriber;
+namespace Gatman\CallrBundle\EventSubscriber;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Youmesoft\CallrBundle\Entity\CallrLog;
-use Youmesoft\CallrBundle\Event\CallrRequestEvent;
-use Youmesoft\CallrBundle\Event\CallrSendEvent;
-use Youmesoft\CallrBundle\Logger\MessageLogger;
-use Youmesoft\CallrBundle\YoumesoftCallrEvents;
+use Gatman\CallrBundle\Entity\CallrLog;
+use Gatman\CallrBundle\Event\CallrRequestEvent;
+use Gatman\CallrBundle\Event\CallrSendEvent;
+use Gatman\CallrBundle\Logger\MessageLogger;
+use Gatman\CallrBundle\GatmanCallrEvents;
 
 class CallrSubscriber implements EventSubscriberInterface
 {
@@ -35,8 +35,8 @@ class CallrSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            YoumesoftCallrEvents::CALLR_REQUEST  => 'onCallrRequest',
-            YoumesoftCallrEvents::CALLR_SMS_SEND => 'onCallrSmsSend',
+            GatmanCallrEvents::CALLR_REQUEST  => 'onCallrRequest',
+            GatmanCallrEvents::CALLR_SMS_SEND => 'onCallrSmsSend',
         ];
     }
 

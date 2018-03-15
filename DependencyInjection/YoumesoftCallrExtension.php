@@ -1,6 +1,6 @@
 <?php
 
-namespace Youmesoft\CallrBundle\DependencyInjection;
+namespace Gatman\CallrBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -13,7 +13,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
  *
  * @link http://symfony.com/doc/current/cookbook/bundles/extension.html
  */
-class YoumesoftCallrExtension extends Extension
+class GatmanCallrExtension extends Extension
 {
     /**
      * {@inheritdoc}
@@ -27,16 +27,16 @@ class YoumesoftCallrExtension extends Extension
         $loader->load('services.xml');
 
         if ($config['disable_delivery']) {
-            $container->getDefinition('youmesoft_callr.manager')
-                      ->replaceArgument(1, new Reference('youmesoft_callr.null_transporter'));
+            $container->getDefinition('gatman_callr.manager')
+                      ->replaceArgument(1, new Reference('gatman_callr.null_transporter'));
         }
 
-        $container->getDefinition('youmesoft_callr.transporter')->replaceArgument(0, $config);
-        $container->getDefinition('youmesoft_callr.subscriber')->replaceArgument(1, $config);
+        $container->getDefinition('gatman_callr.transporter')->replaceArgument(0, $config);
+        $container->getDefinition('gatman_callr.subscriber')->replaceArgument(1, $config);
 
-        $container->findDefinition('youmesoft_callr.data_collector')
+        $container->findDefinition('gatman_callr.data_collector')
                   ->addTag('data_collector', [
-                      'template' => '@YoumesoftCallr/Collector/callr.html.twig',
+                      'template' => '@GatmanCallr/Collector/callr.html.twig',
                       'id'       => 'callr',
                       'priority' => 245,
                   ]);

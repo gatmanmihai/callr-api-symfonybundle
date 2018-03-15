@@ -1,9 +1,9 @@
 <?php
 
-namespace Youmesoft\CallrBundle\Event;
+namespace Gatman\CallrBundle\Event;
 
 use Symfony\Component\EventDispatcher\Event;
-use Youmesoft\CallrBundle\Model\Message;
+use Gatman\CallrBundle\Model\Message;
 
 class CallrSendEvent extends Event
 {

@@ -1,15 +1,15 @@
 <?php
 
-namespace Youmesoft\CallrBundle\Manager;
+namespace Gatman\CallrBundle\Manager;
 
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Youmesoft\CallrBundle\Event\CallrRequestEvent;
-use Youmesoft\CallrBundle\Event\CallrSendEvent;
-use Youmesoft\CallrBundle\EventSubscriber\CallrSubscriber;
-use Youmesoft\CallrBundle\Model\Message;
-use Youmesoft\CallrBundle\Transporter\TransporterInterface;
-use Youmesoft\CallrBundle\YoumesoftCallrEvents;
+use Gatman\CallrBundle\Event\CallrRequestEvent;
+use Gatman\CallrBundle\Event\CallrSendEvent;
+use Gatman\CallrBundle\EventSubscriber\CallrSubscriber;
+use Gatman\CallrBundle\Model\Message;
+use Gatman\CallrBundle\Transporter\TransporterInterface;
+use Gatman\CallrBundle\GatmanCallrEvents;
 
 class CallrManager
 {
@@ -43,7 +43,7 @@ class CallrManager
         $message->setId($response);
 
         $event = new CallrSendEvent($message);
-        $this->dispatcher->dispatch(YoumesoftCallrEvents::CALLR_SMS_SEND, $event);
+        $this->dispatcher->dispatch(GatmanCallrEvents::CALLR_SMS_SEND, $event);
 
         return $response;
     }
@@ -59,7 +59,7 @@ class CallrManager
         $response = $this->transporter->call($name, $arguments);
 
         $event = new CallrRequestEvent($name, $arguments, $response);
-        $this->dispatcher->dispatch(YoumesoftCallrEvents::CALLR_REQUEST, $event);
+        $this->dispatcher->dispatch(GatmanCallrEvents::CALLR_REQUEST, $event);
 
         return $response;
     }

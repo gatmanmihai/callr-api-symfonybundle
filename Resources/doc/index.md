@@ -9,10 +9,10 @@ This bundle requires Symfony 2.8+.
 Installation
 ------------
 
-Add [`youmesoft/callr-bundle`](https://packagist.org/packages/youmesoft/callr-bundle)
+Add [`gatman/callr-bundle`](https://packagist.org/packages/gatman/callr-bundle)
 to your `composer.json` file:
 
-    php composer.phar require "youmesoft/callr-bundle"
+    php composer.phar require "gatman/callr-bundle"
 
 Register the bundle in `app/AppKernel.php`:
 
@@ -21,7 +21,7 @@ public function registerBundles()
 {
     return array(
         // ...
-        new Youmesoft\CallrBundle\YoumesoftCallrBundle(),
+        new Gatman\CallrBundle\GatmanCallrBundle(),
     );
 }
 ```
@@ -32,7 +32,7 @@ Configuration
 Configure bundle in your `config.yml` :
 
 ``` yaml
-youmesoft_callr:
+gatman_callr:
     debug:
         enabled: true
         mode: "orm" # can be one of values: file or orm
@@ -60,8 +60,8 @@ Bundle is using its own entities to do its work. You need to register its mappin
                     mappings:
                     callr_log:
                         type: annotation
-                        prefix: Youmesoft\CallrBundle\Entity
-                        dir: "%kernel.root_dir%/../vendor/youmesoft/callr-bundle/Entity"
+                        prefix: Gatman\CallrBundle\Entity
+                        dir: "%kernel.root_dir%/../vendor/gatman/callr-bundle/Entity"
                         alias: CallrLog # (optional) it will default to the name set for the mapping
                         is_bundle: false
 ```

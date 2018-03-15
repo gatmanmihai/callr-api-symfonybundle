@@ -1,6 +1,6 @@
 <?php
 
-namespace Youmesoft\CallrBundle\DataCollector;
+namespace Gatman\CallrBundle\DataCollector;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,7 +27,7 @@ class MessageDataCollector extends DataCollector
             'messageCount' => 0,
         ];
 
-        $logger = $this->container->get('youmesoft_callr.logger');
+        $logger = $this->container->get('gatman_callr.logger');
 
         $this->data['messages']     = $logger->getMessages();
         $this->data['messageCount'] += $logger->countMessages();

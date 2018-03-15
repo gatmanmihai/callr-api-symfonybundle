@@ -1,6 +1,6 @@
 <?php
 
-namespace Youmesoft\CallrBundle\Model;
+namespace Gatman\CallrBundle\Model;
 
 class Message
 {

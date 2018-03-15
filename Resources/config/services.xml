@@ -5,37 +5,37 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="youmesoft_callr.manager.class">Youmesoft\CallrBundle\Manager\CallrManager</parameter>
-        <parameter key="youmesoft_callr.transporter.class">Youmesoft\CallrBundle\Transporter\CallrTransporter</parameter>
-        <parameter key="youmesoft_callr.null_transporter.class">Youmesoft\CallrBundle\Transporter\NullTransporter</parameter>
-        <parameter key="youmesoft_callr.logger.class">Youmesoft\CallrBundle\Logger\MessageLogger</parameter>
-        <parameter key="youmesoft_callr.data_collector.class">Youmesoft\CallrBundle\DataCollector\MessageDataCollector</parameter>
-        <parameter key="youmesoft_callr.subscriber.class">Youmesoft\CallrBundle\EventSubscriber\CallrSubscriber</parameter>
+        <parameter key="gatman_callr.manager.class">Gatman\CallrBundle\Manager\CallrManager</parameter>
+        <parameter key="gatman_callr.transporter.class">Gatman\CallrBundle\Transporter\CallrTransporter</parameter>
+        <parameter key="gatman_callr.null_transporter.class">Gatman\CallrBundle\Transporter\NullTransporter</parameter>
+        <parameter key="gatman_callr.logger.class">Gatman\CallrBundle\Logger\MessageLogger</parameter>
+        <parameter key="gatman_callr.data_collector.class">Gatman\CallrBundle\DataCollector\MessageDataCollector</parameter>
+        <parameter key="gatman_callr.subscriber.class">Gatman\CallrBundle\EventSubscriber\CallrSubscriber</parameter>
     </parameters>
 
     <services>
-        <service id="youmesoft_callr.transporter" class="%youmesoft_callr.transporter.class%">
+        <service id="gatman_callr.transporter" class="%gatman_callr.transporter.class%">
             <argument type="collection"/>
         </service>
-        <service id="youmesoft_callr.null_transporter" class="%youmesoft_callr.null_transporter.class%">
+        <service id="gatman_callr.null_transporter" class="%gatman_callr.null_transporter.class%">
             <argument type="collection"/>
         </service>
 
-        <service id="youmesoft_callr.logger" class="%youmesoft_callr.logger.class%" />
+        <service id="gatman_callr.logger" class="%gatman_callr.logger.class%" />
 
-        <service id="youmesoft_callr.data_collector" class="%youmesoft_callr.data_collector.class%" public="false">
+        <service id="gatman_callr.data_collector" class="%gatman_callr.data_collector.class%" public="false">
             <argument type="service" id="service_container" />
         </service>
 
-        <service id="youmesoft_callr.manager" class="%youmesoft_callr.manager.class%">
-            <argument type="service" id="youmesoft_callr.subscriber"/>
-            <argument type="service" id="youmesoft_callr.transporter"/>
+        <service id="gatman_callr.manager" class="%gatman_callr.manager.class%">
+            <argument type="service" id="gatman_callr.subscriber"/>
+            <argument type="service" id="gatman_callr.transporter"/>
         </service>
 
-        <service id="youmesoft_callr.subscriber" class="%youmesoft_callr.subscriber.class%">
+        <service id="gatman_callr.subscriber" class="%gatman_callr.subscriber.class%">
             <argument type="service" id="service_container"/>
             <argument type="collection"/>
-            <argument type="service" id="youmesoft_callr.logger"/>
+            <argument type="service" id="gatman_callr.logger"/>
             <tag name="callr.subscriber"/>
         </service>
     </services>

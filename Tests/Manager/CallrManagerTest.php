@@ -1,9 +1,9 @@
 <?php
 
-namespace Youmesoft\CallrBundle\Tests\Manager;
+namespace Gatman\CallrBundle\Tests\Manager;
 
 use PHPUnit\Framework\TestCase;
-use Youmesoft\CallrBundle\Manager\CallrManager;
+use Gatman\CallrBundle\Manager\CallrManager;
 
 class CallrManagerTest extends TestCase
 {

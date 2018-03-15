@@ -1,8 +1,8 @@
 <?php
 
-namespace Youmesoft\CallrBundle\Logger;
+namespace Gatman\CallrBundle\Logger;
 
-use Youmesoft\CallrBundle\Event\CallrSendEvent;
+use Gatman\CallrBundle\Event\CallrSendEvent;
 
 class MessageLogger
 {

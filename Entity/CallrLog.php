@@ -1,6 +1,6 @@
 <?php
 
-namespace Youmesoft\CallrBundle\Entity;
+namespace Gatman\CallrBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 

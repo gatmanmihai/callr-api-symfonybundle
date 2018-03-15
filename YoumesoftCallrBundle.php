@@ -1,12 +1,12 @@
 <?php
 
-namespace Youmesoft\CallrBundle;
+namespace Gatman\CallrBundle;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
-use Youmesoft\CallrBundle\DependencyInjection\Compiler\CallrCompilerPass;
+use Gatman\CallrBundle\DependencyInjection\Compiler\CallrCompilerPass;
 
-class YoumesoftCallrBundle extends Bundle
+class GatmanCallrBundle extends Bundle
 {
     public function build(ContainerBuilder $container)
     {

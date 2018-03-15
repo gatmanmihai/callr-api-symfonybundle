@@ -1,6 +1,6 @@
 <?php
 
-namespace Youmesoft\CallrBundle\DependencyInjection;
+namespace Gatman\CallrBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -18,7 +18,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('youmesoft_callr');
+        $rootNode = $treeBuilder->root('gatman_callr');
 
         $rootNode->children()
                     ->arrayNode('debug')

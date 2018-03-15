@@ -1,8 +1,8 @@
 <?php
 
-namespace Youmesoft\CallrBundle;
+namespace Gatman\CallrBundle;
 
-final class YoumesoftCallrEvents
+final class GatmanCallrEvents
 {
     const CALLR_REQUEST = 'callr.request';
     const CALLR_SMS_SEND = 'callr.sms.send';

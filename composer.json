@@ -1,16 +1,16 @@
 {
-    "name":              "youmesoft/callr-bundle",
+    "name":              "gatman/callr-bundle",
     "type":              "symfony-bundle",
     "description":       "Symfony2 bundle, that make easier the use of CALLR PHP SDK. Supports logging of request/response to callr api via db or file",
     "keywords":          [
-        "callr", "symfony-bundle", "youmesoft", "gatman", "api"
+        "callr", "symfony-bundle", "gatman", "api"
     ],
-    "homepage":          "https://bitbucket.org/youmesoft/callr-api-symfonybundle",
+    "homepage":          "https://github.com/gatmanmihai/callr-api-symfonybundle",
     "license":           "MIT",
     "authors":           [
         {
             "name":  "Gatman Mihail",
-            "email": "mgatman@youmesoft.com"
+            "email": "gatman.mihai@gmail.com"
         }
     ],
     "minimum-stability": "dev",
@@ -33,7 +33,7 @@
     },
     "autoload":          {
         "psr-4": {
-            "Youmesoft\\CallrBundle\\": ""
+            "Gatman\\CallrBundle\\": ""
         }
     },
     "extra":             {

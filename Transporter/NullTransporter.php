@@ -1,6 +1,6 @@
 <?php
 
-namespace Youmesoft\CallrBundle\Transporter;
+namespace Gatman\CallrBundle\Transporter;
 
 class NullTransporter implements TransporterInterface
 {
